@@ -37,7 +37,7 @@ def relogio_completo():
             agora = datetime.now()
             hora  = agora.strftime("%H:%M:%S")
             data  = agora.strftime("%d/%m/%Y")
-            print(f"\r📅 {data}  🕐 {hora}", end="", flush=True)
+            print(f"\r {data} {hora}", end="", flush=True)
             time.sleep(1)
     except KeyboardInterrupt:
         print("\nRelógio encerrado.")
