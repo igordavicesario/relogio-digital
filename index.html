@@ -1,0 +1,65 @@
+import time
+from datetime import datetime
+
+# ─────────────────────────────────────────
+#  Relógio Digital em Tempo Real
+#  Autor: Igor Davi Avelar Rosa Cesário
+#  GitHub: github.com/igordavicesario
+# ─────────────────────────────────────────
+
+def relogio_normal():
+    """Exibe o horário criando uma nova linha a cada segundo."""
+    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
+    try:
+        while True:
+            agora = datetime.now().strftime("%H:%M:%S")
+            print(agora)
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nRelógio encerrado.")
+
+def relogio_sobrescrevendo():
+    """Exibe o horário sobrescrevendo a mesma linha."""
+    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
+    try:
+        while True:
+            agora = datetime.now().strftime("%H:%M:%S")
+            print("\r" + agora, end="", flush=True)
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nRelógio encerrado.")
+
+def relogio_completo():
+    """Exibe data e hora formatadas com separador visual."""
+    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
+    try:
+        while True:
+            agora = datetime.now()
+            hora  = agora.strftime("%H:%M:%S")
+            data  = agora.strftime("%d/%m/%Y")
+            print(f"\r📅 {data}  🕐 {hora}", end="", flush=True)
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nRelógio encerrado.")
+
+
+if __name__ == "__main__":
+    print("=" * 40)
+    print("   RELÓGIO DIGITAL EM TEMPO REAL")
+    print("=" * 40)
+    print("\nEscolha o modo:")
+    print("  1 - Linha nova a cada segundo")
+    print("  2 - Sobrescreve a mesma linha")
+    print("  3 - Data + hora formatados")
+
+    opcao = input("\nOpção: ").strip()
+
+    if opcao == "1":
+        relogio_normal()
+    elif opcao == "2":
+        relogio_sobrescrevendo()
+    elif opcao == "3":
+        relogio_completo()
+    else:
+        print("Opção inválida. Executando modo padrão...")
+        relogio_sobrescrevendo()
