@@ -1,65 +1,65 @@
-import time
-from datetime import datetime
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relógio Digital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
 
-# ─────────────────────────────────────────
-#  Relógio Digital em Tempo Real
-#  Autor: Igor Davi Avelar Rosa Cesário
-#  GitHub: github.com/igordavicesario
-# ─────────────────────────────────────────
+    h1 {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
 
-def relogio_normal():
-    """Exibe o horário criando uma nova linha a cada segundo."""
-    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
-    try:
-        while True:
-            agora = datetime.now().strftime("%H:%M:%S")
-            print(agora)
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nRelógio encerrado.")
+    #relogio {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #222;
+      letter-spacing: 4px;
+    }
 
-def relogio_sobrescrevendo():
-    """Exibe o horário sobrescrevendo a mesma linha."""
-    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
-    try:
-        while True:
-            agora = datetime.now().strftime("%H:%M:%S")
-            print("\r" + agora, end="", flush=True)
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nRelógio encerrado.")
+    #data {
+      color: #888;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
 
-def relogio_completo():
-    """Exibe data e hora formatadas com separador visual."""
-    print("Relógio iniciado. Pressione Ctrl+C para parar.\n")
-    try:
-        while True:
-            agora = datetime.now()
-            hora  = agora.strftime("%H:%M:%S")
-            data  = agora.strftime("%d/%m/%Y")
-            print(f"\r {data} {hora}", end="", flush=True)
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nRelógio encerrado.")
+  <h1>Relógio Digital</h1>
+  <div id="relogio">00:00:00</div>
+  <div id="data"></div>
 
+  <script>
+    function atualizar() {
+      const agora = new Date();
 
-if __name__ == "__main__":
-    print("=" * 40)
-    print("   RELÓGIO DIGITAL EM TEMPO REAL")
-    print("=" * 40)
-    print("\nEscolha o modo:")
-    print("  1 - Linha nova a cada segundo")
-    print("  2 - Sobrescreve a mesma linha")
-    print("  3 - Data + hora formatados")
+      const horas    = String(agora.getHours()).padStart(2, '0');
+      const minutos  = String(agora.getMinutes()).padStart(2, '0');
+      const segundos = String(agora.getSeconds()).padStart(2, '0');
 
-    opcao = input("\nOpção: ").strip()
+      const dia = String(agora.getDate()).padStart(2, '0');
+      const mes = String(agora.getMonth() + 1).padStart(2, '0');
+      const ano = agora.getFullYear();
 
-    if opcao == "1":
-        relogio_normal()
-    elif opcao == "2":
-        relogio_sobrescrevendo()
-    elif opcao == "3":
-        relogio_completo()
-    else:
-        print("Opção inválida. Executando modo padrão...")
-        relogio_sobrescrevendo()
+      document.getElementById('relogio').textContent = `${horas}:${minutos}:${segundos}`;
+      document.getElementById('data').textContent    = `${dia}/${mes}/${ano}`;
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+  </script>
+
+</body>
+</html>
