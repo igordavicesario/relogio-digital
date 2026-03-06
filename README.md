@@ -1,40 +1,23 @@
-# Relógio Digital em Tempo Real
+# Relógio Digital
 
-Aplicação Python que exibe o horário atual no terminal, atualizado a cada segundo.
+Projeto simples feito durante as aulas de Python na FIAP.
+
+A ideia era exibir o horário atual no terminal, atualizado a cada segundo. Depois adaptei para rodar no navegador também.
 
 ## O que aprendi
 
-- Uso do módulo `datetime` para obter a hora atual
-- Formatação de strings com `strftime`
-- Loop infinito com `while True`
-- Uso de `\r`, `end=""` e `flush=True` para sobrescrever a linha no terminal
-- Tratamento de interrupção com `KeyboardInterrupt`
+- Como usar o módulo `datetime` para pegar a hora atual
+- Formatar a hora com `strftime`
+- Usar `while True` com `time.sleep(1)` para atualizar a cada segundo
+- O truque do `\r` para sobrescrever a linha no terminal
 
-## Como executar
+## Como rodar
 
 ```bash
 python relogio.py
 ```
 
-Você pode escolher entre 3 modos ao iniciar o programa.
-
-## Conceitos utilizados
-
-| Conceito | Descrição |
-|---|---|
-| `datetime.now()` | Retorna data e hora atual |
-| `.strftime("%H:%M:%S")` | Formata hora:minuto:segundo |
-| `time.sleep(1)` | Pausa a execução por 1 segundo |
-| `\r` | Retorna o cursor pro início da linha |
-| `flush=True` | Força a exibição imediata no terminal |
-
-## Estrutura
-
-```
-relogio-digital/
-│
-└── relogio.py     # código principal com 3 modos
-```
+Ou abra o `index.html` no navegador para ver a versão web.
 
 ---
-Desenvolvido por [Igor Davi](https://github.com/igordavicesario) • FIAP Engenharia de Software
+Feito por Igor Davi · FIAP Engenharia de Software
